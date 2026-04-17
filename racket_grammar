@@ -1,0 +1,41 @@
+Program         -> ExprSeq EOF
+
+ExprSeq         -> Expr ExprSeq
+                 | ε
+
+Expr            -> Atom
+                 | QuoteExpr
+                 | ListExpr
+
+Atom            -> IDENT
+                 | NUMBER
+                 | BOOLEAN
+                 | STRING
+
+QuoteExpr       -> QUOTE Expr
+
+ListExpr        -> LPAREN ListContents RPAREN
+
+ListContents    -> DEFINE DefineTail
+                 | IF Expr Expr Expr
+                 | LAMBDA LPAREN ParamList RPAREN Body
+                 | LET LPAREN BindingSeq RPAREN Body
+                 | AppTail
+
+DefineTail      -> IDENT Expr
+                 | LPAREN IDENT ParamList RPAREN Body
+
+AppTail         -> Expr ExprSeq
+
+ParamList       -> IDENT ParamList
+                 | ε
+
+Body            -> Expr BodyTail
+
+BodyTail        -> Expr BodyTail
+                 | ε
+
+BindingSeq      -> Binding BindingSeq
+                 | ε
+
+Binding         -> LPAREN IDENT Expr RPAREN
