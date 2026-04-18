@@ -1,4 +1,4 @@
-from parse_tree import *
+from grammar import *
 
 class ParseError(Exception):
     pass
