@@ -31,7 +31,6 @@ def compute_first(grammar):
         for prod in grammar.productions:
             lhs = prod.lhs
             rhs = prod.rhs
-
             before = len(FIRST[lhs])
 
             # produção A -> ε
@@ -51,6 +50,8 @@ def compute_first(grammar):
 
             if len(FIRST[lhs]) > before:
                 changed = True
+
+    return FIRST
 
 
 def compute_follow(grammar, FIRST, start_symbol):
@@ -102,5 +103,32 @@ def compute_follow(grammar, FIRST, start_symbol):
     return FOLLOW
 
 def build_parsing_table(grammar, FIRST, FOLLOW):
-    # todo
-    pass
+    table = {}
+
+    for prod in grammar.productions:
+        A = prod.lhs
+
+        # calcula FIRST(rhs) da produção
+        first_rhs = set()
+        for symbol in prod.rhs:
+            first_rhs |= (FIRST[symbol] - {'ε'})
+            if 'ε' not in FIRST[symbol]:
+                break
+        else:
+            first_rhs.add('ε')  # todos os símbolos podem derivar ε
+
+        # regra 1: a ∈ FIRST(rhs) → M[A, a] = prod
+        for terminal in first_rhs:
+            if terminal != 'ε':
+                table[(A, terminal)] = prod
+
+        # regra 2: ε ∈ FIRST(rhs) → para b ∈ FOLLOW(A): M[A, b] = prod
+        if 'ε' in first_rhs:
+            for terminal in FOLLOW[A]:
+                table[(A, terminal)] = prod
+
+    return table
+
+
+
+
