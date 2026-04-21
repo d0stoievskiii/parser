@@ -4,12 +4,27 @@ class ParseError(Exception):
     pass
 
 class PredictiveParser:
-    def __init__(self, tokens, parsing_table, start_symbol, include_epsilon=True):
+    def __init__(self, tokens, parsing_table, start_symbol, sync_sets=None, include_epsilon=True):
         self.tokens = tokens
         self.table = parsing_table
         self.start_symbol = start_symbol
         self.include_epsilon = include_epsilon
+        self.sync_sets = sync_sets or {}
         self.pos = 0
+        self.errors = []
+
+    def _report_error(self, message):
+        self.errors.append(message)
+        print(message)
+
+    def _panic(self, nonterminal):
+        sync = self.sync_sets.get(nonterminal, {TokenType.EOF})
+
+        while self.pos < len(self.tokens):
+            tok = self.current_token()
+            if tok.type in sync or tok.type == TokenType.EOF:
+                return
+            self.advance()
 
     def current_token(self):
         if self.pos >= len(self.tokens):
@@ -22,11 +37,18 @@ class PredictiveParser:
 
     def _match_terminal(self, expected_type, current_token, current_node):
         if expected_type != current_token.type:
-            raise ParseError(
-                f"Esperava {expected_type.name}, recebeu {current_token.type.name} "
-                f"@ linha {current_token.line}, columa {current_token.column} "
-                f"perto de {current_token.lexeme!r}"
-            )
+            self._report_error(
+            f"Esperava {expected_type.name}, recebeu {current_token.type.name} "
+            f"@ linha {current_token.line}, coluna {current_token.column} "
+            f"perto de {current_token.lexeme!r}")
+            
+            if expected_type in {TokenType.RPAREN, TokenType.EOF}:
+                # assumimos que foi esquecido e não descartamos o atual, que pode ser bom
+                return
+            else:
+                # discartamos o token ruim
+                self.advance()
+                return
 
         current_node.token = current_token
         self.advance()
@@ -36,11 +58,13 @@ class PredictiveParser:
         production = self.table.get(key)
 
         if production is None:
-            raise ParseError(
-                f"Nenhuma produção para {nonterminal.name} com lookahead 1"
-                f"{current_token.type.name} @ linha {current_token.line}, "
-                f"coluna {current_token.column} perto de {current_token.lexeme!r}"
-            )
+            self._report_error(
+            f"Nenhuma produção para {nonterminal.name} com lookahead "
+            f"{current_token.type.name} @ linha {current_token.line}, "
+            f"coluna {current_token.column} perto de {current_token.lexeme!r}")
+            self._panic(nonterminal)
+            return
+        
         if production.rhs == [EPSILON]:
             if self.include_epsilon:
                 epsilon_node = ParseTreeNode(EPSILON)
@@ -61,6 +85,8 @@ class PredictiveParser:
         node_stack = [root]
 
         while stack:
+            if self.pos >= len(self.tokens):
+                raise ParseError("Fim inesperado da entrada")
             top = stack.pop()
             current = self.current_token()
             current_node = node_stack.pop()

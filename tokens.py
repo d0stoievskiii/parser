@@ -19,7 +19,6 @@ def fetch_token_list(path):
 
     return tokens
 
-
 def save_parse_tree_json(root, filepath):
     with open(filepath, "w", encoding="utf-8") as f:
         json.dump(
@@ -28,7 +27,6 @@ def save_parse_tree_json(root, filepath):
             indent=2,
             ensure_ascii=False
         )
-
 
 def dump_table(table):
     with open("data.json", "w") as f:
