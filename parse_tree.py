@@ -292,12 +292,30 @@ def node_label(node):
 
     return base
 
-def print_tree(node, prefix="", is_last=True):
+def print_tree(node, prefix="", is_last=True, file=None):
     connector = "└── " if is_last else "├── "
-    print(prefix + connector + node_label(node))
+
+    print(prefix + connector + node_label(node), file=file)
 
     new_prefix = prefix + ("    " if is_last else "│   ")
 
     for i, child in enumerate(node.children):
         is_last_child = (i == len(node.children) - 1)
-        print_tree(child, new_prefix, is_last_child)
+        print_tree(child, new_prefix, is_last_child, file=file)
+
+def parse_tree_to_dict(node):
+    result = {
+        "symbol": symbol_to_string(node.symbol),
+        "children": [parse_tree_to_dict(child) for child in node.children]
+    }
+
+    if node.token is not None:
+        result["token"] = {
+            "type": node.token.type.name,
+            "lexeme": node.token.lexeme,
+            "line": node.token.line,
+            "column": node.token.column
+        }
+
+    return result
+

@@ -41,7 +41,6 @@ class PredictiveParser:
                 f"{current_token.type.name} @ linha {current_token.line}, "
                 f"coluna {current_token.column} perto de {current_token.lexeme!r}"
             )
-
         if production.rhs == [EPSILON]:
             if self.include_epsilon:
                 epsilon_node = ParseTreeNode(EPSILON)
@@ -56,21 +55,15 @@ class PredictiveParser:
             node_stack.append(child)
 
     def parse(self):
-        stack = [TokenType.EOF, self.start_symbol]
+        stack = [self.start_symbol]
 
-        eof_node = ParseTreeNode(TokenType.EOF)
         root = ParseTreeNode(self.start_symbol)
-        node_stack = [eof_node, root]
+        node_stack = [root]
 
         while stack:
             top = stack.pop()
             current = self.current_token()
             current_node = node_stack.pop()
-
-            if top == EPSILON:
-                if self.include_epsilon:
-                    current_node.symbol = EPSILON
-                continue
 
             if isinstance(top, TokenType):
                 self._match_terminal(top, current, current_node)
@@ -81,7 +74,7 @@ class PredictiveParser:
             else:
                 raise ParseError(f"Simbolo desconhecido na pilha: {top!r}")
 
-        if self.current_token().type != TokenType.EOF:
+        if self.pos != len(self.tokens):
             tok = self.current_token()
             raise ParseError(
                 f"Token inesperado à direita @ linha {tok.line}, coluna {tok.column}: "

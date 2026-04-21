@@ -1,0 +1,665 @@
+└── PROGRAM
+    ├── EXPR_SEQ
+    │   ├── EXPR
+    │   │   └── ATOM
+    │   │       └── IDENT('lang')
+    │   └── EXPR_SEQ
+    │       ├── EXPR
+    │       │   └── ATOM
+    │       │       └── IDENT('racket')
+    │       └── EXPR_SEQ
+    │           ├── EXPR
+    │           │   └── LIST_EXPR
+    │           │       ├── LPAREN('(')
+    │           │       ├── LIST_CONTENTS
+    │           │       │   ├── DEFINE('define')
+    │           │       │   └── DEFINE_TAIL
+    │           │       │       ├── IDENT('x')
+    │           │       │       └── EXPR
+    │           │       │           └── ATOM
+    │           │       │               └── NUMBER('42')
+    │           │       └── RPAREN(')')
+    │           └── EXPR_SEQ
+    │               ├── EXPR
+    │               │   └── LIST_EXPR
+    │               │       ├── LPAREN('(')
+    │               │       ├── LIST_CONTENTS
+    │               │       │   ├── DEFINE('define')
+    │               │       │   └── DEFINE_TAIL
+    │               │       │       ├── IDENT('y')
+    │               │       │       └── EXPR
+    │               │       │           └── ATOM
+    │               │       │               └── NUMBER('10')
+    │               │       └── RPAREN(')')
+    │               └── EXPR_SEQ
+    │                   ├── EXPR
+    │                   │   └── LIST_EXPR
+    │                   │       ├── LPAREN('(')
+    │                   │       ├── LIST_CONTENTS
+    │                   │       │   ├── DEFINE('define')
+    │                   │       │   └── DEFINE_TAIL
+    │                   │       │       ├── LPAREN('(')
+    │                   │       │       ├── IDENT('square')
+    │                   │       │       ├── PARAM_LIST
+    │                   │       │       │   ├── IDENT('n')
+    │                   │       │       │   └── PARAM_LIST
+    │                   │       │       │       └── ε
+    │                   │       │       ├── RPAREN(')')
+    │                   │       │       └── BODY
+    │                   │       │           ├── EXPR
+    │                   │       │           │   └── LIST_EXPR
+    │                   │       │           │       ├── LPAREN('(')
+    │                   │       │           │       ├── LIST_CONTENTS
+    │                   │       │           │       │   └── APP_TAIL
+    │                   │       │           │       │       ├── EXPR
+    │                   │       │           │       │       │   └── ATOM
+    │                   │       │           │       │       │       └── IDENT('n')
+    │                   │       │           │       │       └── EXPR_SEQ
+    │                   │       │           │       │           ├── EXPR
+    │                   │       │           │       │           │   └── ATOM
+    │                   │       │           │       │           │       └── IDENT('n')
+    │                   │       │           │       │           └── EXPR_SEQ
+    │                   │       │           │       │               └── ε
+    │                   │       │           │       └── RPAREN(')')
+    │                   │       │           └── BODY_TAIL
+    │                   │       │               └── ε
+    │                   │       └── RPAREN(')')
+    │                   └── EXPR_SEQ
+    │                       ├── EXPR
+    │                       │   └── LIST_EXPR
+    │                       │       ├── LPAREN('(')
+    │                       │       ├── LIST_CONTENTS
+    │                       │       │   ├── DEFINE('define')
+    │                       │       │   └── DEFINE_TAIL
+    │                       │       │       ├── LPAREN('(')
+    │                       │       │       ├── IDENT('factorial')
+    │                       │       │       ├── PARAM_LIST
+    │                       │       │       │   ├── IDENT('n')
+    │                       │       │       │   └── PARAM_LIST
+    │                       │       │       │       └── ε
+    │                       │       │       ├── RPAREN(')')
+    │                       │       │       └── BODY
+    │                       │       │           ├── EXPR
+    │                       │       │           │   └── LIST_EXPR
+    │                       │       │           │       ├── LPAREN('(')
+    │                       │       │           │       ├── LIST_CONTENTS
+    │                       │       │           │       │   ├── IF('if')
+    │                       │       │           │       │   ├── EXPR
+    │                       │       │           │       │   │   └── LIST_EXPR
+    │                       │       │           │       │   │       ├── LPAREN('(')
+    │                       │       │           │       │   │       ├── LIST_CONTENTS
+    │                       │       │           │       │   │       │   └── APP_TAIL
+    │                       │       │           │       │   │       │       ├── EXPR
+    │                       │       │           │       │   │       │       │   └── ATOM
+    │                       │       │           │       │   │       │       │       └── IDENT('n')
+    │                       │       │           │       │   │       │       └── EXPR_SEQ
+    │                       │       │           │       │   │       │           ├── EXPR
+    │                       │       │           │       │   │       │           │   └── ATOM
+    │                       │       │           │       │   │       │           │       └── NUMBER('1')
+    │                       │       │           │       │   │       │           └── EXPR_SEQ
+    │                       │       │           │       │   │       │               └── ε
+    │                       │       │           │       │   │       └── RPAREN(')')
+    │                       │       │           │       │   ├── EXPR
+    │                       │       │           │       │   │   └── ATOM
+    │                       │       │           │       │   │       └── NUMBER('1')
+    │                       │       │           │       │   └── EXPR
+    │                       │       │           │       │       └── LIST_EXPR
+    │                       │       │           │       │           ├── LPAREN('(')
+    │                       │       │           │       │           ├── LIST_CONTENTS
+    │                       │       │           │       │           │   └── APP_TAIL
+    │                       │       │           │       │           │       ├── EXPR
+    │                       │       │           │       │           │       │   └── ATOM
+    │                       │       │           │       │           │       │       └── IDENT('n')
+    │                       │       │           │       │           │       └── EXPR_SEQ
+    │                       │       │           │       │           │           ├── EXPR
+    │                       │       │           │       │           │           │   └── LIST_EXPR
+    │                       │       │           │       │           │           │       ├── LPAREN('(')
+    │                       │       │           │       │           │           │       ├── LIST_CONTENTS
+    │                       │       │           │       │           │           │       │   └── APP_TAIL
+    │                       │       │           │       │           │           │       │       ├── EXPR
+    │                       │       │           │       │           │           │       │       │   └── ATOM
+    │                       │       │           │       │           │           │       │       │       └── IDENT('factorial')
+    │                       │       │           │       │           │           │       │       └── EXPR_SEQ
+    │                       │       │           │       │           │           │       │           ├── EXPR
+    │                       │       │           │       │           │           │       │           │   └── LIST_EXPR
+    │                       │       │           │       │           │           │       │           │       ├── LPAREN('(')
+    │                       │       │           │       │           │           │       │           │       ├── LIST_CONTENTS
+    │                       │       │           │       │           │           │       │           │       │   └── APP_TAIL
+    │                       │       │           │       │           │           │       │           │       │       ├── EXPR
+    │                       │       │           │       │           │           │       │           │       │       │   └── ATOM
+    │                       │       │           │       │           │           │       │           │       │       │       └── IDENT('n')
+    │                       │       │           │       │           │           │       │           │       │       └── EXPR_SEQ
+    │                       │       │           │       │           │           │       │           │       │           ├── EXPR
+    │                       │       │           │       │           │           │       │           │       │           │   └── ATOM
+    │                       │       │           │       │           │           │       │           │       │           │       └── NUMBER('1')
+    │                       │       │           │       │           │           │       │           │       │           └── EXPR_SEQ
+    │                       │       │           │       │           │           │       │           │       │               └── ε
+    │                       │       │           │       │           │           │       │           │       └── RPAREN(')')
+    │                       │       │           │       │           │           │       │           └── EXPR_SEQ
+    │                       │       │           │       │           │           │       │               └── ε
+    │                       │       │           │       │           │           │       └── RPAREN(')')
+    │                       │       │           │       │           │           └── EXPR_SEQ
+    │                       │       │           │       │           │               └── ε
+    │                       │       │           │       │           └── RPAREN(')')
+    │                       │       │           │       └── RPAREN(')')
+    │                       │       │           └── BODY_TAIL
+    │                       │       │               └── ε
+    │                       │       └── RPAREN(')')
+    │                       └── EXPR_SEQ
+    │                           ├── EXPR
+    │                           │   └── LIST_EXPR
+    │                           │       ├── LPAREN('(')
+    │                           │       ├── LIST_CONTENTS
+    │                           │       │   ├── DEFINE('define')
+    │                           │       │   └── DEFINE_TAIL
+    │                           │       │       ├── LPAREN('(')
+    │                           │       │       ├── IDENT('classify')
+    │                           │       │       ├── PARAM_LIST
+    │                           │       │       │   ├── IDENT('number')
+    │                           │       │       │   └── PARAM_LIST
+    │                           │       │       │       ├── IDENT('n')
+    │                           │       │       │       └── PARAM_LIST
+    │                           │       │       │           └── ε
+    │                           │       │       ├── RPAREN(')')
+    │                           │       │       └── BODY
+    │                           │       │           ├── EXPR
+    │                           │       │           │   └── LIST_EXPR
+    │                           │       │           │       ├── LPAREN('(')
+    │                           │       │           │       ├── LIST_CONTENTS
+    │                           │       │           │       │   └── APP_TAIL
+    │                           │       │           │       │       ├── EXPR
+    │                           │       │           │       │       │   └── ATOM
+    │                           │       │           │       │       │       └── IDENT('cond')
+    │                           │       │           │       │       └── EXPR_SEQ
+    │                           │       │           │       │           ├── EXPR
+    │                           │       │           │       │           │   └── LIST_EXPR
+    │                           │       │           │       │           │       ├── LPAREN('(')
+    │                           │       │           │       │           │       ├── LIST_CONTENTS
+    │                           │       │           │       │           │       │   └── APP_TAIL
+    │                           │       │           │       │           │       │       ├── EXPR
+    │                           │       │           │       │           │       │       │   └── ATOM
+    │                           │       │           │       │           │       │       │       └── IDENT('n')
+    │                           │       │           │       │           │       │       └── EXPR_SEQ
+    │                           │       │           │       │           │       │           ├── EXPR
+    │                           │       │           │       │           │       │           │   └── ATOM
+    │                           │       │           │       │           │       │           │       └── NUMBER('0')
+    │                           │       │           │       │           │       │           └── EXPR_SEQ
+    │                           │       │           │       │           │       │               └── ε
+    │                           │       │           │       │           │       └── RPAREN(')')
+    │                           │       │           │       │           └── EXPR_SEQ
+    │                           │       │           │       │               ├── EXPR
+    │                           │       │           │       │               │   └── ATOM
+    │                           │       │           │       │               │       └── STRING('"negative"')
+    │                           │       │           │       │               └── EXPR_SEQ
+    │                           │       │           │       │                   ├── EXPR
+    │                           │       │           │       │                   │   └── LIST_EXPR
+    │                           │       │           │       │                   │       ├── LPAREN('(')
+    │                           │       │           │       │                   │       ├── LIST_CONTENTS
+    │                           │       │           │       │                   │       │   └── APP_TAIL
+    │                           │       │           │       │                   │       │       ├── EXPR
+    │                           │       │           │       │                   │       │       │   └── ATOM
+    │                           │       │           │       │                   │       │       │       └── IDENT('n')
+    │                           │       │           │       │                   │       │       └── EXPR_SEQ
+    │                           │       │           │       │                   │       │           ├── EXPR
+    │                           │       │           │       │                   │       │           │   └── ATOM
+    │                           │       │           │       │                   │       │           │       └── NUMBER('0')
+    │                           │       │           │       │                   │       │           └── EXPR_SEQ
+    │                           │       │           │       │                   │       │               └── ε
+    │                           │       │           │       │                   │       └── RPAREN(')')
+    │                           │       │           │       │                   └── EXPR_SEQ
+    │                           │       │           │       │                       ├── EXPR
+    │                           │       │           │       │                       │   └── ATOM
+    │                           │       │           │       │                       │       └── STRING('"zero"')
+    │                           │       │           │       │                       └── EXPR_SEQ
+    │                           │       │           │       │                           ├── EXPR
+    │                           │       │           │       │                           │   └── LIST_EXPR
+    │                           │       │           │       │                           │       ├── LPAREN('(')
+    │                           │       │           │       │                           │       ├── LIST_CONTENTS
+    │                           │       │           │       │                           │       │   └── APP_TAIL
+    │                           │       │           │       │                           │       │       ├── EXPR
+    │                           │       │           │       │                           │       │       │   └── ATOM
+    │                           │       │           │       │                           │       │       │       └── IDENT('n')
+    │                           │       │           │       │                           │       │       └── EXPR_SEQ
+    │                           │       │           │       │                           │       │           ├── EXPR
+    │                           │       │           │       │                           │       │           │   └── ATOM
+    │                           │       │           │       │                           │       │           │       └── NUMBER('10')
+    │                           │       │           │       │                           │       │           └── EXPR_SEQ
+    │                           │       │           │       │                           │       │               └── ε
+    │                           │       │           │       │                           │       └── RPAREN(')')
+    │                           │       │           │       │                           └── EXPR_SEQ
+    │                           │       │           │       │                               ├── EXPR
+    │                           │       │           │       │                               │   └── ATOM
+    │                           │       │           │       │                               │       └── STRING('"small"')
+    │                           │       │           │       │                               └── EXPR_SEQ
+    │                           │       │           │       │                                   ├── EXPR
+    │                           │       │           │       │                                   │   └── ATOM
+    │                           │       │           │       │                                   │       └── IDENT('else')
+    │                           │       │           │       │                                   └── EXPR_SEQ
+    │                           │       │           │       │                                       ├── EXPR
+    │                           │       │           │       │                                       │   └── ATOM
+    │                           │       │           │       │                                       │       └── STRING('"large"')
+    │                           │       │           │       │                                       └── EXPR_SEQ
+    │                           │       │           │       │                                           └── ε
+    │                           │       │           │       └── RPAREN(')')
+    │                           │       │           └── BODY_TAIL
+    │                           │       │               └── ε
+    │                           │       └── RPAREN(')')
+    │                           └── EXPR_SEQ
+    │                               ├── EXPR
+    │                               │   └── LIST_EXPR
+    │                               │       ├── LPAREN('(')
+    │                               │       ├── LIST_CONTENTS
+    │                               │       │   ├── DEFINE('define')
+    │                               │       │   └── DEFINE_TAIL
+    │                               │       │       ├── IDENT('numbers')
+    │                               │       │       └── EXPR
+    │                               │       │           └── LIST_EXPR
+    │                               │       │               ├── LPAREN('(')
+    │                               │       │               ├── LIST_CONTENTS
+    │                               │       │               │   └── APP_TAIL
+    │                               │       │               │       ├── EXPR
+    │                               │       │               │       │   └── ATOM
+    │                               │       │               │       │       └── IDENT('list')
+    │                               │       │               │       └── EXPR_SEQ
+    │                               │       │               │           ├── EXPR
+    │                               │       │               │           │   └── ATOM
+    │                               │       │               │           │       └── NUMBER('1')
+    │                               │       │               │           └── EXPR_SEQ
+    │                               │       │               │               ├── EXPR
+    │                               │       │               │               │   └── ATOM
+    │                               │       │               │               │       └── NUMBER('2')
+    │                               │       │               │               └── EXPR_SEQ
+    │                               │       │               │                   ├── EXPR
+    │                               │       │               │                   │   └── ATOM
+    │                               │       │               │                   │       └── NUMBER('3')
+    │                               │       │               │                   └── EXPR_SEQ
+    │                               │       │               │                       ├── EXPR
+    │                               │       │               │                       │   └── ATOM
+    │                               │       │               │                       │       └── NUMBER('4')
+    │                               │       │               │                       └── EXPR_SEQ
+    │                               │       │               │                           ├── EXPR
+    │                               │       │               │                           │   └── ATOM
+    │                               │       │               │                           │       └── NUMBER('5')
+    │                               │       │               │                           └── EXPR_SEQ
+    │                               │       │               │                               └── ε
+    │                               │       │               └── RPAREN(')')
+    │                               │       └── RPAREN(')')
+    │                               └── EXPR_SEQ
+    │                                   ├── EXPR
+    │                                   │   └── LIST_EXPR
+    │                                   │       ├── LPAREN('(')
+    │                                   │       ├── LIST_CONTENTS
+    │                                   │       │   ├── DEFINE('define')
+    │                                   │       │   └── DEFINE_TAIL
+    │                                   │       │       ├── IDENT('squares')
+    │                                   │       │       └── EXPR
+    │                                   │       │           └── LIST_EXPR
+    │                                   │       │               ├── LPAREN('(')
+    │                                   │       │               ├── LIST_CONTENTS
+    │                                   │       │               │   └── APP_TAIL
+    │                                   │       │               │       ├── EXPR
+    │                                   │       │               │       │   └── ATOM
+    │                                   │       │               │       │       └── IDENT('map')
+    │                                   │       │               │       └── EXPR_SEQ
+    │                                   │       │               │           ├── EXPR
+    │                                   │       │               │           │   └── LIST_EXPR
+    │                                   │       │               │           │       ├── LPAREN('(')
+    │                                   │       │               │           │       ├── LIST_CONTENTS
+    │                                   │       │               │           │       │   └── APP_TAIL
+    │                                   │       │               │           │       │       ├── EXPR
+    │                                   │       │               │           │       │       │   └── ATOM
+    │                                   │       │               │           │       │       │       └── IDENT('lambda')
+    │                                   │       │               │           │       │       └── EXPR_SEQ
+    │                                   │       │               │           │       │           ├── EXPR
+    │                                   │       │               │           │       │           │   └── LIST_EXPR
+    │                                   │       │               │           │       │           │       ├── LPAREN('(')
+    │                                   │       │               │           │       │           │       ├── LIST_CONTENTS
+    │                                   │       │               │           │       │           │       │   └── APP_TAIL
+    │                                   │       │               │           │       │           │       │       ├── EXPR
+    │                                   │       │               │           │       │           │       │       │   └── ATOM
+    │                                   │       │               │           │       │           │       │       │       └── IDENT('n')
+    │                                   │       │               │           │       │           │       │       └── EXPR_SEQ
+    │                                   │       │               │           │       │           │       │           └── ε
+    │                                   │       │               │           │       │           │       └── RPAREN(')')
+    │                                   │       │               │           │       │           └── EXPR_SEQ
+    │                                   │       │               │           │       │               ├── EXPR
+    │                                   │       │               │           │       │               │   └── LIST_EXPR
+    │                                   │       │               │           │       │               │       ├── LPAREN('(')
+    │                                   │       │               │           │       │               │       ├── LIST_CONTENTS
+    │                                   │       │               │           │       │               │       │   └── APP_TAIL
+    │                                   │       │               │           │       │               │       │       ├── EXPR
+    │                                   │       │               │           │       │               │       │       │   └── ATOM
+    │                                   │       │               │           │       │               │       │       │       └── IDENT('square')
+    │                                   │       │               │           │       │               │       │       └── EXPR_SEQ
+    │                                   │       │               │           │       │               │       │           ├── EXPR
+    │                                   │       │               │           │       │               │       │           │   └── ATOM
+    │                                   │       │               │           │       │               │       │           │       └── IDENT('n')
+    │                                   │       │               │           │       │               │       │           └── EXPR_SEQ
+    │                                   │       │               │           │       │               │       │               └── ε
+    │                                   │       │               │           │       │               │       └── RPAREN(')')
+    │                                   │       │               │           │       │               └── EXPR_SEQ
+    │                                   │       │               │           │       │                   └── ε
+    │                                   │       │               │           │       └── RPAREN(')')
+    │                                   │       │               │           └── EXPR_SEQ
+    │                                   │       │               │               ├── EXPR
+    │                                   │       │               │               │   └── ATOM
+    │                                   │       │               │               │       └── IDENT('numbers')
+    │                                   │       │               │               └── EXPR_SEQ
+    │                                   │       │               │                   └── ε
+    │                                   │       │               └── RPAREN(')')
+    │                                   │       └── RPAREN(')')
+    │                                   └── EXPR_SEQ
+    │                                       ├── EXPR
+    │                                       │   └── LIST_EXPR
+    │                                       │       ├── LPAREN('(')
+    │                                       │       ├── LIST_CONTENTS
+    │                                       │       │   └── APP_TAIL
+    │                                       │       │       ├── EXPR
+    │                                       │       │       │   └── ATOM
+    │                                       │       │       │       └── IDENT('let')
+    │                                       │       │       └── EXPR_SEQ
+    │                                       │       │           ├── EXPR
+    │                                       │       │           │   └── LIST_EXPR
+    │                                       │       │           │       ├── LPAREN('(')
+    │                                       │       │           │       ├── LIST_CONTENTS
+    │                                       │       │           │       │   └── APP_TAIL
+    │                                       │       │           │       │       ├── EXPR
+    │                                       │       │           │       │       │   └── ATOM
+    │                                       │       │           │       │       │       └── IDENT('sum')
+    │                                       │       │           │       │       └── EXPR_SEQ
+    │                                       │       │           │       │           ├── EXPR
+    │                                       │       │           │       │           │   └── LIST_EXPR
+    │                                       │       │           │       │           │       ├── LPAREN('(')
+    │                                       │       │           │       │           │       ├── LIST_CONTENTS
+    │                                       │       │           │       │           │       │   └── APP_TAIL
+    │                                       │       │           │       │           │       │       ├── EXPR
+    │                                       │       │           │       │           │       │       │   └── ATOM
+    │                                       │       │           │       │           │       │       │       └── IDENT('x')
+    │                                       │       │           │       │           │       │       └── EXPR_SEQ
+    │                                       │       │           │       │           │       │           ├── EXPR
+    │                                       │       │           │       │           │       │           │   └── ATOM
+    │                                       │       │           │       │           │       │           │       └── IDENT('y')
+    │                                       │       │           │       │           │       │           └── EXPR_SEQ
+    │                                       │       │           │       │           │       │               └── ε
+    │                                       │       │           │       │           │       └── RPAREN(')')
+    │                                       │       │           │       │           └── EXPR_SEQ
+    │                                       │       │           │       │               ├── EXPR
+    │                                       │       │           │       │               │   └── ATOM
+    │                                       │       │           │       │               │       └── IDENT('fact')
+    │                                       │       │           │       │               └── EXPR_SEQ
+    │                                       │       │           │       │                   ├── EXPR
+    │                                       │       │           │       │                   │   └── LIST_EXPR
+    │                                       │       │           │       │                   │       ├── LPAREN('(')
+    │                                       │       │           │       │                   │       ├── LIST_CONTENTS
+    │                                       │       │           │       │                   │       │   └── APP_TAIL
+    │                                       │       │           │       │                   │       │       ├── EXPR
+    │                                       │       │           │       │                   │       │       │   └── ATOM
+    │                                       │       │           │       │                   │       │       │       └── IDENT('factorial')
+    │                                       │       │           │       │                   │       │       └── EXPR_SEQ
+    │                                       │       │           │       │                   │       │           ├── EXPR
+    │                                       │       │           │       │                   │       │           │   └── ATOM
+    │                                       │       │           │       │                   │       │           │       └── NUMBER('5')
+    │                                       │       │           │       │                   │       │           └── EXPR_SEQ
+    │                                       │       │           │       │                   │       │               └── ε
+    │                                       │       │           │       │                   │       └── RPAREN(')')
+    │                                       │       │           │       │                   └── EXPR_SEQ
+    │                                       │       │           │       │                       └── ε
+    │                                       │       │           │       └── RPAREN(')')
+    │                                       │       │           └── EXPR_SEQ
+    │                                       │       │               ├── EXPR
+    │                                       │       │               │   └── LIST_EXPR
+    │                                       │       │               │       ├── LPAREN('(')
+    │                                       │       │               │       ├── LIST_CONTENTS
+    │                                       │       │               │       │   └── APP_TAIL
+    │                                       │       │               │       │       ├── EXPR
+    │                                       │       │               │       │       │   └── ATOM
+    │                                       │       │               │       │       │       └── IDENT('display')
+    │                                       │       │               │       │       └── EXPR_SEQ
+    │                                       │       │               │       │           ├── EXPR
+    │                                       │       │               │       │           │   └── ATOM
+    │                                       │       │               │       │           │       └── IDENT('Sum')
+    │                                       │       │               │       │           └── EXPR_SEQ
+    │                                       │       │               │       │               └── ε
+    │                                       │       │               │       └── RPAREN(')')
+    │                                       │       │               └── EXPR_SEQ
+    │                                       │       │                   ├── EXPR
+    │                                       │       │                   │   └── LIST_EXPR
+    │                                       │       │                   │       ├── LPAREN('(')
+    │                                       │       │                   │       ├── LIST_CONTENTS
+    │                                       │       │                   │       │   └── APP_TAIL
+    │                                       │       │                   │       │       ├── EXPR
+    │                                       │       │                   │       │       │   └── ATOM
+    │                                       │       │                   │       │       │       └── IDENT('display')
+    │                                       │       │                   │       │       └── EXPR_SEQ
+    │                                       │       │                   │       │           ├── EXPR
+    │                                       │       │                   │       │           │   └── ATOM
+    │                                       │       │                   │       │           │       └── IDENT('sum')
+    │                                       │       │                   │       │           └── EXPR_SEQ
+    │                                       │       │                   │       │               └── ε
+    │                                       │       │                   │       └── RPAREN(')')
+    │                                       │       │                   └── EXPR_SEQ
+    │                                       │       │                       ├── EXPR
+    │                                       │       │                       │   └── LIST_EXPR
+    │                                       │       │                       │       ├── LPAREN('(')
+    │                                       │       │                       │       ├── LIST_CONTENTS
+    │                                       │       │                       │       │   └── APP_TAIL
+    │                                       │       │                       │       │       ├── EXPR
+    │                                       │       │                       │       │       │   └── ATOM
+    │                                       │       │                       │       │       │       └── IDENT('newline')
+    │                                       │       │                       │       │       └── EXPR_SEQ
+    │                                       │       │                       │       │           └── ε
+    │                                       │       │                       │       └── RPAREN(')')
+    │                                       │       │                       └── EXPR_SEQ
+    │                                       │       │                           ├── EXPR
+    │                                       │       │                           │   └── LIST_EXPR
+    │                                       │       │                           │       ├── LPAREN('(')
+    │                                       │       │                           │       ├── LIST_CONTENTS
+    │                                       │       │                           │       │   └── APP_TAIL
+    │                                       │       │                           │       │       ├── EXPR
+    │                                       │       │                           │       │       │   └── ATOM
+    │                                       │       │                           │       │       │       └── IDENT('display')
+    │                                       │       │                           │       │       └── EXPR_SEQ
+    │                                       │       │                           │       │           ├── EXPR
+    │                                       │       │                           │       │           │   └── ATOM
+    │                                       │       │                           │       │           │       └── IDENT('Factorial')
+    │                                       │       │                           │       │           └── EXPR_SEQ
+    │                                       │       │                           │       │               └── ε
+    │                                       │       │                           │       └── RPAREN(')')
+    │                                       │       │                           └── EXPR_SEQ
+    │                                       │       │                               ├── EXPR
+    │                                       │       │                               │   └── LIST_EXPR
+    │                                       │       │                               │       ├── LPAREN('(')
+    │                                       │       │                               │       ├── LIST_CONTENTS
+    │                                       │       │                               │       │   └── APP_TAIL
+    │                                       │       │                               │       │       ├── EXPR
+    │                                       │       │                               │       │       │   └── ATOM
+    │                                       │       │                               │       │       │       └── IDENT('display')
+    │                                       │       │                               │       │       └── EXPR_SEQ
+    │                                       │       │                               │       │           ├── EXPR
+    │                                       │       │                               │       │           │   └── ATOM
+    │                                       │       │                               │       │           │       └── IDENT('fact')
+    │                                       │       │                               │       │           └── EXPR_SEQ
+    │                                       │       │                               │       │               └── ε
+    │                                       │       │                               │       └── RPAREN(')')
+    │                                       │       │                               └── EXPR_SEQ
+    │                                       │       │                                   ├── EXPR
+    │                                       │       │                                   │   └── LIST_EXPR
+    │                                       │       │                                   │       ├── LPAREN('(')
+    │                                       │       │                                   │       ├── LIST_CONTENTS
+    │                                       │       │                                   │       │   └── APP_TAIL
+    │                                       │       │                                   │       │       ├── EXPR
+    │                                       │       │                                   │       │       │   └── ATOM
+    │                                       │       │                                   │       │       │       └── IDENT('newline')
+    │                                       │       │                                   │       │       └── EXPR_SEQ
+    │                                       │       │                                   │       │           └── ε
+    │                                       │       │                                   │       └── RPAREN(')')
+    │                                       │       │                                   └── EXPR_SEQ
+    │                                       │       │                                       ├── EXPR
+    │                                       │       │                                       │   └── LIST_EXPR
+    │                                       │       │                                       │       ├── LPAREN('(')
+    │                                       │       │                                       │       ├── LIST_CONTENTS
+    │                                       │       │                                       │       │   └── APP_TAIL
+    │                                       │       │                                       │       │       ├── EXPR
+    │                                       │       │                                       │       │       │   └── ATOM
+    │                                       │       │                                       │       │       │       └── IDENT('display')
+    │                                       │       │                                       │       │       └── EXPR_SEQ
+    │                                       │       │                                       │       │           ├── EXPR
+    │                                       │       │                                       │       │           │   └── ATOM
+    │                                       │       │                                       │       │           │       └── IDENT('Squares')
+    │                                       │       │                                       │       │           └── EXPR_SEQ
+    │                                       │       │                                       │       │               └── ε
+    │                                       │       │                                       │       └── RPAREN(')')
+    │                                       │       │                                       └── EXPR_SEQ
+    │                                       │       │                                           ├── EXPR
+    │                                       │       │                                           │   └── LIST_EXPR
+    │                                       │       │                                           │       ├── LPAREN('(')
+    │                                       │       │                                           │       ├── LIST_CONTENTS
+    │                                       │       │                                           │       │   └── APP_TAIL
+    │                                       │       │                                           │       │       ├── EXPR
+    │                                       │       │                                           │       │       │   └── ATOM
+    │                                       │       │                                           │       │       │       └── IDENT('display')
+    │                                       │       │                                           │       │       └── EXPR_SEQ
+    │                                       │       │                                           │       │           ├── EXPR
+    │                                       │       │                                           │       │           │   └── ATOM
+    │                                       │       │                                           │       │           │       └── IDENT('squares')
+    │                                       │       │                                           │       │           └── EXPR_SEQ
+    │                                       │       │                                           │       │               └── ε
+    │                                       │       │                                           │       └── RPAREN(')')
+    │                                       │       │                                           └── EXPR_SEQ
+    │                                       │       │                                               ├── EXPR
+    │                                       │       │                                               │   └── LIST_EXPR
+    │                                       │       │                                               │       ├── LPAREN('(')
+    │                                       │       │                                               │       ├── LIST_CONTENTS
+    │                                       │       │                                               │       │   └── APP_TAIL
+    │                                       │       │                                               │       │       ├── EXPR
+    │                                       │       │                                               │       │       │   └── ATOM
+    │                                       │       │                                               │       │       │       └── IDENT('newline')
+    │                                       │       │                                               │       │       └── EXPR_SEQ
+    │                                       │       │                                               │       │           └── ε
+    │                                       │       │                                               │       └── RPAREN(')')
+    │                                       │       │                                               └── EXPR_SEQ
+    │                                       │       │                                                   ├── EXPR
+    │                                       │       │                                                   │   └── LIST_EXPR
+    │                                       │       │                                                   │       ├── LPAREN('(')
+    │                                       │       │                                                   │       ├── LIST_CONTENTS
+    │                                       │       │                                                   │       │   └── APP_TAIL
+    │                                       │       │                                                   │       │       ├── EXPR
+    │                                       │       │                                                   │       │       │   └── ATOM
+    │                                       │       │                                                   │       │       │       └── IDENT('display')
+    │                                       │       │                                                   │       │       └── EXPR_SEQ
+    │                                       │       │                                                   │       │           ├── EXPR
+    │                                       │       │                                                   │       │           │   └── ATOM
+    │                                       │       │                                                   │       │           │       └── IDENT('Classification')
+    │                                       │       │                                                   │       │           └── EXPR_SEQ
+    │                                       │       │                                                   │       │               ├── EXPR
+    │                                       │       │                                                   │       │               │   └── ATOM
+    │                                       │       │                                                   │       │               │       └── IDENT('of')
+    │                                       │       │                                                   │       │               └── EXPR_SEQ
+    │                                       │       │                                                   │       │                   ├── EXPR
+    │                                       │       │                                                   │       │                   │   └── ATOM
+    │                                       │       │                                                   │       │                   │       └── IDENT('x')
+    │                                       │       │                                                   │       │                   └── EXPR_SEQ
+    │                                       │       │                                                   │       │                       └── ε
+    │                                       │       │                                                   │       └── RPAREN(')')
+    │                                       │       │                                                   └── EXPR_SEQ
+    │                                       │       │                                                       ├── EXPR
+    │                                       │       │                                                       │   └── LIST_EXPR
+    │                                       │       │                                                       │       ├── LPAREN('(')
+    │                                       │       │                                                       │       ├── LIST_CONTENTS
+    │                                       │       │                                                       │       │   └── APP_TAIL
+    │                                       │       │                                                       │       │       ├── EXPR
+    │                                       │       │                                                       │       │       │   └── ATOM
+    │                                       │       │                                                       │       │       │       └── IDENT('display')
+    │                                       │       │                                                       │       │       └── EXPR_SEQ
+    │                                       │       │                                                       │       │           ├── EXPR
+    │                                       │       │                                                       │       │           │   └── LIST_EXPR
+    │                                       │       │                                                       │       │           │       ├── LPAREN('(')
+    │                                       │       │                                                       │       │           │       ├── LIST_CONTENTS
+    │                                       │       │                                                       │       │           │       │   └── APP_TAIL
+    │                                       │       │                                                       │       │           │       │       ├── EXPR
+    │                                       │       │                                                       │       │           │       │       │   └── ATOM
+    │                                       │       │                                                       │       │           │       │       │       └── IDENT('classify')
+    │                                       │       │                                                       │       │           │       │       └── EXPR_SEQ
+    │                                       │       │                                                       │       │           │       │           ├── EXPR
+    │                                       │       │                                                       │       │           │       │           │   └── ATOM
+    │                                       │       │                                                       │       │           │       │           │       └── IDENT('number')
+    │                                       │       │                                                       │       │           │       │           └── EXPR_SEQ
+    │                                       │       │                                                       │       │           │       │               ├── EXPR
+    │                                       │       │                                                       │       │           │       │               │   └── ATOM
+    │                                       │       │                                                       │       │           │       │               │       └── IDENT('x')
+    │                                       │       │                                                       │       │           │       │               └── EXPR_SEQ
+    │                                       │       │                                                       │       │           │       │                   └── ε
+    │                                       │       │                                                       │       │           │       └── RPAREN(')')
+    │                                       │       │                                                       │       │           └── EXPR_SEQ
+    │                                       │       │                                                       │       │               └── ε
+    │                                       │       │                                                       │       └── RPAREN(')')
+    │                                       │       │                                                       └── EXPR_SEQ
+    │                                       │       │                                                           ├── EXPR
+    │                                       │       │                                                           │   └── LIST_EXPR
+    │                                       │       │                                                           │       ├── LPAREN('(')
+    │                                       │       │                                                           │       ├── LIST_CONTENTS
+    │                                       │       │                                                           │       │   └── APP_TAIL
+    │                                       │       │                                                           │       │       ├── EXPR
+    │                                       │       │                                                           │       │       │   └── ATOM
+    │                                       │       │                                                           │       │       │       └── IDENT('newline')
+    │                                       │       │                                                           │       │       └── EXPR_SEQ
+    │                                       │       │                                                           │       │           └── ε
+    │                                       │       │                                                           │       └── RPAREN(')')
+    │                                       │       │                                                           └── EXPR_SEQ
+    │                                       │       │                                                               └── ε
+    │                                       │       └── RPAREN(')')
+    │                                       └── EXPR_SEQ
+    │                                           ├── EXPR
+    │                                           │   └── LIST_EXPR
+    │                                           │       ├── LPAREN('(')
+    │                                           │       ├── LIST_CONTENTS
+    │                                           │       │   ├── IF('if')
+    │                                           │       │   ├── EXPR
+    │                                           │       │   │   └── LIST_EXPR
+    │                                           │       │   │       ├── LPAREN('(')
+    │                                           │       │   │       ├── LIST_CONTENTS
+    │                                           │       │   │       │   └── APP_TAIL
+    │                                           │       │   │       │       ├── EXPR
+    │                                           │       │   │       │       │   └── ATOM
+    │                                           │       │   │       │       │       └── IDENT('x')
+    │                                           │       │   │       │       └── EXPR_SEQ
+    │                                           │       │   │       │           ├── EXPR
+    │                                           │       │   │       │           │   └── ATOM
+    │                                           │       │   │       │           │       └── IDENT('y')
+    │                                           │       │   │       │           └── EXPR_SEQ
+    │                                           │       │   │       │               └── ε
+    │                                           │       │   │       └── RPAREN(')')
+    │                                           │       │   ├── EXPR
+    │                                           │       │   │   └── LIST_EXPR
+    │                                           │       │   │       ├── LPAREN('(')
+    │                                           │       │   │       ├── LIST_CONTENTS
+    │                                           │       │   │       │   └── APP_TAIL
+    │                                           │       │   │       │       ├── EXPR
+    │                                           │       │   │       │       │   └── ATOM
+    │                                           │       │   │       │       │       └── IDENT('display')
+    │                                           │       │   │       │       └── EXPR_SEQ
+    │                                           │       │   │       │           ├── EXPR
+    │                                           │       │   │       │           │   └── ATOM
+    │                                           │       │   │       │           │       └── STRING('"x is greater than y"')
+    │                                           │       │   │       │           └── EXPR_SEQ
+    │                                           │       │   │       │               └── ε
+    │                                           │       │   │       └── RPAREN(')')
+    │                                           │       │   └── EXPR
+    │                                           │       │       └── LIST_EXPR
+    │                                           │       │           ├── LPAREN('(')
+    │                                           │       │           ├── LIST_CONTENTS
+    │                                           │       │           │   └── APP_TAIL
+    │                                           │       │           │       ├── EXPR
+    │                                           │       │           │       │   └── ATOM
+    │                                           │       │           │       │       └── IDENT('display')
+    │                                           │       │           │       └── EXPR_SEQ
+    │                                           │       │           │           ├── EXPR
+    │                                           │       │           │           │   └── ATOM
+    │                                           │       │           │           │       └── STRING('"y is greater or equal to x"')
+    │                                           │       │           │           └── EXPR_SEQ
+    │                                           │       │           │               └── ε
+    │                                           │       │           └── RPAREN(')')
+    │                                           │       └── RPAREN(')')
+    │                                           └── EXPR_SEQ
+    │                                               └── ε
+    └── EOF('')

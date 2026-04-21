@@ -7,7 +7,7 @@ Expr            -> Atom
                  | QuoteExpr
                  | ListExpr
 
-Atom            -> IDENT
+Atom            -> SYMBOL
                  | NUMBER
                  | BOOLEAN
                  | STRING
