@@ -1,5 +1,30 @@
 from grammar import *
 
+TOKEN_PRETTY = {
+    TokenType.LPAREN: "(",
+    TokenType.RPAREN: ")",
+    TokenType.QUOTE: "'",
+
+    TokenType.DEFINE: "define",
+    TokenType.IF: "if",
+    TokenType.LAMBDA: "lambda",
+    TokenType.LET: "let",
+
+    TokenType.IDENT: "identificador",
+    TokenType.NUMBER: "número",
+    TokenType.BOOLEAN: "#t ou #f",
+    TokenType.STRING: "string",
+
+    TokenType.EOF: "fim de arquivo",
+}
+
+def pretty_token(token_type, token=None):
+    if token is not None:
+        if token_type in {TokenType.IDENT, TokenType.NUMBER, TokenType.STRING, TokenType.BOOLEAN}:
+            return repr(token.lexeme)
+
+    return TOKEN_PRETTY.get(token_type, token_type.name)
+
 class ParseError(Exception):
     pass
 
@@ -38,7 +63,7 @@ class PredictiveParser:
     def _match_terminal(self, expected_type, current_token, current_node):
         if expected_type != current_token.type:
             self._report_error(
-            f"Esperava {expected_type.name}, recebeu {current_token.type.name} "
+            f"Esperava {pretty_token(expected_type)}, recebeu {pretty_token(current_token.type, current_token)} "
             f"@ linha {current_token.line}, coluna {current_token.column} "
             f"perto de {current_token.lexeme!r}")
             
